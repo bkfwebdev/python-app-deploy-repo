@@ -2,13 +2,14 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from os import path
 db = SQLAlchemy()
-DB_NAME = "restaurauntbuddy"
+#DB_NAME = "restaurauntbuddy"
+DB_NAME = "database.db"
 
 
 def create_app():
     app = Flask(__name__)
     app.config['SECRET_KEY'] = 'siunimtauchumkiubiuje'
-    app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://postgres:Over9000@localhost:5432/{DB_NAME}"
+    app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
 
     db.init_app(app)
 
