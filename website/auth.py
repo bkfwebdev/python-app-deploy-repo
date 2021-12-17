@@ -23,7 +23,7 @@ def login():
                      category='error')
        else:
            flash('Email/User Does not exist.', category='error')
-   return render_template("login.html")
+   return render_template("login.html", user = current_user)
 
 
 @auth.route('/logout')
@@ -61,5 +61,5 @@ def register():
 
 
 
-    return render_template("register.html")
+    return render_template("register.html", user = current_user)
 
