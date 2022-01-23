@@ -12,12 +12,12 @@ def home():
     if request.method == 'POST':
         note = request.form.get('note')
         if len(note) < 1:
-            flash('Note is too short', category = 'error')
+            flash('URL is too short', category = 'error')
         else:
             new_note = Note(data = note, user_id = current_user.id)
             db.session.add(new_note)
             db.session.commit()
-            flash('Noted added!', category = 'success')
+            flash('URL added!', category = 'success')
 
     return render_template('home.html', user = current_user)
 
@@ -31,5 +31,9 @@ def delete_note():
             db.session.delete(note)
             db.session.commit()
             return jsonify({})
+
+@views.route('/search-request', methods =['GET','POST'])
+def search_request():
+    return render_template ('search.html', user = current_user)
 
 # add routes for delete-location, delete-preference, delete-favorite

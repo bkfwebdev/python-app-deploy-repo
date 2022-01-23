@@ -1,13 +1,11 @@
 {% extends "base.html" %}
 {% block title %}Search{% endblock %}
 {% block content %}
-<div class="input-group">
-    <div class="form-outline">
-      <input type="search" id="form1" class="form-control" />
-      <label class="form-label" for="form1">Search</label>
-    </div>
-    <button type="button" class="btn btn-primary">
-      <i class="fas fa-search"></i>
-    </button>
+<div class="container">
+  <div class="row height d-flex justify-content-center align-items-center">
+      <div class="col-md-8">
+          <div class="search"> <i class="fa fa-search"></i> <input type="text" class="form-control" placeholder="Have a question? Ask Now"> <button class="btn btn-primary">Search</button> </div>
+      </div>
   </div>
+</div>
 {% endblock %}
