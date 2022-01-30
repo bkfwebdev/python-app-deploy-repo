@@ -7,3 +7,8 @@ function deleteNote(noteId){
     });
 }
 
+/*
+additional functions or modifications needed
+add favorite
+delete favorite
+*/
