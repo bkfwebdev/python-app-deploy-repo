@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, flash, jsonify 
 from flask_login import login_required, current_user
-from .models2 import Favorite
+from .models import Favorite
 from . import db
 import json
 
@@ -38,7 +38,7 @@ def search_request():
 
 
 @views.route('/manual-input', methods = ['GET', 'POST'])
-def manual_imput():
+def manual_input():
     return render_template ('manual-restauraunt-form.html', user = current_user)
 
 

@@ -2,36 +2,27 @@ from . import db
 from flask_login import UserMixin
 from sqlalchemy.sql import func
 
-class Note(db.Model):
+
+
+class Favorite(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    data = db.Column(db.String(10000))
+    RestaurauntName = db.Column(db.String(10000))
+    PhoneNumber = db.Column(db.String(10000))
+    Website = db.Column(db.String(10000))
+    StreetAddress = db.Column(db.String(10000))
     date = db.Column(db.DateTime(timezone=True), default=func.now())
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-
 
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(150), unique=True)
     password = db.Column(db.String(150))
     first_name = db.Column(db.String(150))
-    notes = db.relationship('Note')
+    favorites = db.relationship('Favorite')
+
+
  
 
-class Preference(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    food_type = db.Column(db.String(150))
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
-class Location(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    state = db.Column(db.String(150))
-    city = db.Column(db.String(150))
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-
-class Favorite(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    restaurant_name = db.Column(db.String(150))
-    restaurant_url = db.Column(db.String(150))
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
 

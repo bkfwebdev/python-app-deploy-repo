@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, flash, jsonify 
 from flask_login import login_required, current_user
-from .models import Note
+from .models import Favorite
 from . import db
 import json
 
@@ -10,14 +10,18 @@ views = Blueprint('views',__name__)
 @login_required
 def home():
     if request.method == 'POST':
-        note = request.form.get('note')
-        if len(note) < 1:
-            flash('URL is too short', category = 'error')
+        RestaurauntName = request.form.get('RestaurauntName')
+        PhoneNumber = request.form.get('PhoneNumber')
+        Website = request.form.get('Website')
+        StreetAddress = request.form.get('StreetAddress')
+
+        if len(RestaurauntName) < 1:
+            flash('Data entered incorrectly!', category = 'error')
         else:
-            new_note = Note(data = note, user_id = current_user.id)
-            db.session.add(new_note)
+            new_favorite = Favorite(RestaurauntName = RestaurauntName, PhoneNumber = PhoneNumber, Website = Website, StreetAddress = StreetAddress, user_id = current_user.id)
+            db.session.add(new_favorite)
             db.session.commit()
-            flash('URL added!', category = 'success')
+            flash('favorite added!', category = 'success')
 
     return render_template('home.html', user = current_user)
 

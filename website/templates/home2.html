@@ -5,10 +5,10 @@
 <ul class="list-group list-group-flush" id="favorites">
   {% for favorites in user.notes %}
   <li class="list-group-item">
-    <p>{{ favorite.name }}</p>
-    <p>{{ favorite.phone }}</p>
-    <p>{{ favorite.website }}</p>
-    <p>{{ favorite.address }}</p>
+    <p>{{ favorite.ResataurauntName}}</p>
+    <p>{{ favorite.PhoneNumber }}</p>
+    <p>{{ favorite.Website }}</p>
+    <p>{{ favorite.StreetAddress }}</p>
     <button type="button" class="close" onClick="deleteNote({{ favorite.id }})">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -16,9 +16,16 @@
   {% endfor %}
 </ul>
 <form method="POST">
-  <textarea name="note" id="note" class="form-control"></textarea>
-  <div align="center">
-    <button type="submit" class="btn btn-primary">Add Restuaraunt URL</button>
-  </div>
+  <div class="form-group">
+    <label for="RestaurauntName">Resatauraunt Name</label>
+    <input  id="RestaurauntName"  placeholder="Name of Restauraunt"><br>
+    <label for="PhoneNumber">Phone Number</label>
+    <input id="PhoneNumber" placeholder="Restauraunt Phone number"><br>
+    <label for="Website">Website</label>
+    <input id="Website" placeholder="URL for website"><br>
+    <label for="StreetAddress">Street Address</label>
+    <input id="StreetAddress" placeholder="Restauraunt location"><br>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</div>
 </form>
 {% endblock %}
