@@ -3,9 +3,9 @@
 {% block content %}
 <h1>Favorites Main Page</h1>
 <ul class="list-group list-group-flush" id="favorites">
-  {% for favorites in user.notes %}
+  {% for favorite in user.favorites %}
   <li class="list-group-item">
-    <p>{{ favorite.ResataurauntName}}</p>
+    <p>{{ favorite.RestaurauntName}}</p>
     <p>{{ favorite.PhoneNumber }}</p>
     <p>{{ favorite.Website }}</p>
     <p>{{ favorite.StreetAddress }}</p>

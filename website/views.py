@@ -15,7 +15,7 @@ def home():
         Website = request.form.get('Website')
         StreetAddress = request.form.get('StreetAddress')
 
-        if len(RestaurauntName) < 1:
+        if len('RestaurauntName') < 1:
             flash('Data entered incorrectly!', category = 'error')
         else:
             new_favorite = Favorite(RestaurauntName = RestaurauntName, PhoneNumber = PhoneNumber, Website = Website, StreetAddress = StreetAddress, user_id = current_user.id)
