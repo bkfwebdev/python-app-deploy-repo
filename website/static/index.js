@@ -1,14 +1,9 @@
-function deleteNote(noteId){
-    fetch('/delete-note',{
+function deleteFavorite(favoriteId){
+    fetch('/delete-favorite',{
         method:'POST',
-        body: JSON.stringify({ noteId: noteId}),
+        body: JSON.stringify({ favoriteId: favoriteId}),
     }).then((_res)=>{
         window.location.href = "/";
     });
 }
 
-/*
-additional functions or modifications needed
-add favorite
-delete favorite
-*/
