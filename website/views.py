@@ -10,6 +10,7 @@ views = Blueprint('views',__name__)
 @login_required
 def home():
     if request.method == 'POST':
+        
         RestaurauntName = request.form.get('RestaurauntName')
         PhoneNumber = request.form.get('PhoneNumber')
         Website = request.form.get('Website')

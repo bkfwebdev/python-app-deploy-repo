@@ -2,6 +2,19 @@
 {% block title %}Home{% endblock %} 
 {% block content %}
 <h1>Favorites Main Page</h1>
+<form method="POST">
+  <div class="form-group">
+    <label for="RestaurauntName">Restauraunt Name</label>
+    <input type="text" id="RestaurauntName" name = "RestaurauntName" placeholder="Name of Restauraunt"><br>
+    <label for="PhoneNumber">Phone Number</label>
+    <input type="text" id="PhoneNumber" name = "PhoneNumber" placeholder="Restauraunt Phone number"><br>
+    <label for="Website">Website</label>
+    <input type="text" id="Website" name = "Website" placeholder="URL for website"><br>
+    <label for="StreetAddress">Street Address</label>
+    <input type="text" id="StreetAddress" name = "StreetAddress" placeholder="Restauraunt location"><br>
+  <button type="submit" class="btn btn-primary">Submit</button>
+ </div>
+</form>
 <ul class="list-group list-group-flush" id="favorites">
   {% for favorite in user.favorites %}
   <li class="list-group-item">
@@ -15,17 +28,5 @@
   </li>
   {% endfor %}
 </ul>
-<form method="POST">
-  <div class="form-group">
-    <label for="RestaurauntName">Restauraunt Name</label>
-    <input type="text" id="RestaurauntName"  placeholder="Name of Restauraunt"><br>
-    <label for="PhoneNumber">Phone Number</label>
-    <input type="text" id="PhoneNumber" placeholder="Restauraunt Phone number"><br>
-    <label for="Website">Website</label>
-    <input type="text" id="Website" placeholder="URL for website"><br>
-    <label for="StreetAddress">Street Address</label>
-    <input type="text" id="StreetAddress" placeholder="Restauraunt location"><br>
-  <button type="submit" class="btn btn-primary">Submit</button>
- </div>
-</form>
+
 {% endblock %}
