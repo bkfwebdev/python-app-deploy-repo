@@ -3,6 +3,7 @@ from flask_login import login_required, current_user
 from .models import Favorite
 from . import db
 import json
+import requests
 
 views = Blueprint('views',__name__)
 
@@ -39,6 +40,29 @@ def delete_favorite():
 
 @views.route('/search-request', methods = ['GET','POST'])
 def search_request():
+    url1 = "https://worldwide-restaurants.p.rapidapi.com/typeahead"
+    url2 = "https://worldwide-restaurants.p.rapidapi.com/search"
+    headers = {
+    'content-type': "application/x-www-form-urlencoded",
+    'x-rapidapi-host': "worldwide-restaurants.p.rapidapi.com",
+    'x-rapidapi-key': "5f44f5a205msh8e75909c98c9ec5p19b863jsnaab17199b013"
+    }
+
+    if request.method == 'POST':
+         searchInput = request.form.get('searchInput')
+         payload1 = f"q={searchInput}%20PA&language=en_US" 
+         r1 = requests.request("POST", url1, data=payload1, headers=headers)
+         data_json = json.loads(r1.text)
+         location_id = data_json["results"]["data"][0]["result_object"]["location_id"]
+         payload2 = f"language=en_US&limit=30&location_id={location_id}&currency=USD"
+         r2 = requests.request("POST", url2, data=payload2, headers=headers)
+
+        #extract restauraunt data from r2 display data in view select favorites from view
+
+
+
+
+
     return render_template ('search.html', user = current_user)
 
 

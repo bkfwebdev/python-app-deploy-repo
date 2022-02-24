@@ -1,11 +1,15 @@
 {% extends "base.html" %}
 {% block title %}Search{% endblock %}
 {% block content %}
+<form method=POST>
 <div class="container">
   <div class="row height d-flex justify-content-center align-items-center">
       <div class="col-md-8">
-          <div class="search"> <i class="fa fa-search"></i> <input type="text" class="form-control" placeholder="Enter Location For Restauraunt Search"> <button class="btn btn-primary">Search</button> </div>
+          <div class="search"> <input id="searchInput" name="searchInput" type="text" class="form-control" placeholder="Enter Location For Restauraunt Search"> 
+            <button type="submit" class="btn btn-primary">Search</button> 
+          </div>
       </div>
   </div>
 </div>
+</form>
 {% endblock %}
