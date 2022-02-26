@@ -56,12 +56,11 @@ def search_request():
          location_id = data_json["results"]["data"][0]["result_object"]["location_id"]
          payload2 = f"language=en_US&limit=30&location_id={location_id}&currency=USD"
          r2 = requests.request("POST", url2, data=payload2, headers=headers)
+         data_json = json.loads(r2.text)
+         json_formatted_str = json.dumps(data_json, indent=2)
+         print(json_formatted_str)
 
         #extract restauraunt data from r2 display data in view select favorites from view
-
-
-
-
 
     return render_template ('search.html', user = current_user)
 

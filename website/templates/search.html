@@ -12,4 +12,18 @@
   </div>
 </div>
 </form>
+<!-->
+<ul class="list-group list-group-flush" id="favorites">
+  {% for search_result in user.search_results %}
+  <li class="list-group-item">
+    <p>{{ favorite.RestaurauntName}}</p>
+    <p>{{ favorite.PhoneNumber }}</p>
+    <p>{{ favorite.Website }}</p>
+    <p>{{ favorite.StreetAddress }}</p>
+    <button type="button" class="close" onClick="deleteNote({{ favorite.id }})">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </li>
+  {% endfor %}
+</ul>
 {% endblock %}
