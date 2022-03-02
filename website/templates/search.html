@@ -12,15 +12,15 @@
   </div>
 </div>
 </form>
-<!-->
-<ul class="list-group list-group-flush" id="favorites">
-  {% for search_result in user.search_results %}
+
+<ul class="list-group list-group-flush" id="search-results">
+  {% for result in the_results %}
   <li class="list-group-item">
-    <p>{{ favorite.RestaurauntName}}</p>
-    <p>{{ favorite.PhoneNumber }}</p>
-    <p>{{ favorite.Website }}</p>
-    <p>{{ favorite.StreetAddress }}</p>
-    <button type="button" class="close" onClick="deleteNote({{ favorite.id }})">
+    <p>{{ result.RestaurauntName}}</p>
+    <p>{{ result.PhoneNumber }}</p>
+    <p>{{ result.Website }}</p>
+    <p>{{ result.StreetAddress }}</p>
+    <button type="button" class="close" >
       <span aria-hidden="true">&times;</span>
     </button>
   </li>
