@@ -15,11 +15,11 @@ data_array = data["results"]["data"]
 #print(what_is_this)
 
 for data_point in data_array:
-    if data_point["name"]:
+    if "name" in data_point:
         print(data_point["name"])
-    if data_point["phone"]:
+    if "phone" in data_point:
         print(data_point["phone"])
-    if data_point["website"]:
+    if "website" in data_point:
         print(data_point["website"])
-    if data_point["address"]:
+    if "address" in data_point:
         print(data_point["address"])
