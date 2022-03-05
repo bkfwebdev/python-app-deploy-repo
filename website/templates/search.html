@@ -14,16 +14,27 @@
 </form>
 
 <ul class="list-group list-group-flush" id="search-results">
-  {% for result in the_results %}
+{% for data in my_data %}
   <li class="list-group-item">
-    <p>{{ result.RestaurauntName}}</p>
-    <p>{{ result.PhoneNumber }}</p>
-    <p>{{ result.Website }}</p>
-    <p>{{ result.StreetAddress }}</p>
+    {% if data["name"] %}
+    <p>{{ data["name"]}}</p>
+    {% endif %}
+
+    {% if data["phone"] %}
+    <p>{{ data["phone"] }}</p>
+    {% endif %}
+
+    {% if data["website"] %}
+    <p>{{ data["website"] }}</p>
+    {% endif %}
+
+    {% if data["address"] %}
+    <p>{{ data["address"]}}</p>
+    {% endif %}
     <button type="button" class="close" >
-      <span aria-hidden="true">&times;</span>
+      Add to favorites
     </button>
   </li>
-  {% endfor %}
+{% endfor %}
 </ul>
 {% endblock %}

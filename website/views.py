@@ -57,12 +57,13 @@ def search_request():
          payload2 = f"language=en_US&limit=30&location_id={location_id}&currency=USD"
          r2 = requests.request("POST", url2, data=payload2, headers=headers)
          data_json = json.loads(r2.text)
+         my_data = data_json["results"]["data"]
          json_formatted_str = json.dumps(data_json, indent=2)
          print(json_formatted_str)
          with open('restauraunt_data.json','w') as outfile:
           outfile.write(json_formatted_str)
 
-    return render_template ('search.html', user = current_user)
+    return render_template ('search.html', my_data = my_data, user = current_user)
 
 
 @views.route('/manual-input', methods = ['GET', 'POST'])
