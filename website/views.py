@@ -7,6 +7,7 @@ import requests
 
 views = Blueprint('views',__name__)
 
+
 @views.route('/', methods = ['GET', 'POST'])
 @login_required
 def home():
@@ -49,21 +50,22 @@ def search_request():
     }
 
     if request.method == 'POST':
-         searchInput = request.form.get('searchInput')
-         payload1 = f"q={searchInput}%20PA&language=en_US" 
-         r1 = requests.request("POST", url1, data=payload1, headers=headers)
-         data_json = json.loads(r1.text)
-         location_id = data_json["results"]["data"][0]["result_object"]["location_id"]
-         payload2 = f"language=en_US&limit=30&location_id={location_id}&currency=USD"
-         r2 = requests.request("POST", url2, data=payload2, headers=headers)
-         data_json = json.loads(r2.text)
-         my_data = data_json["results"]["data"]
-         json_formatted_str = json.dumps(data_json, indent=2)
-         print(json_formatted_str)
-         with open('restauraunt_data.json','w') as outfile:
+        searchInput = request.form.get('searchInput')
+        payload1 = f"q={searchInput}%20PA&language=en_US" 
+        r1 = requests.request("POST", url1, data=payload1, headers=headers)
+        data_json = json.loads(r1.text)
+        location_id = data_json["results"]["data"][0]["result_object"]["location_id"]
+        payload2 = f"language=en_US&limit=30&location_id={location_id}&currency=USD"
+        r2 = requests.request("POST", url2, data=payload2, headers=headers)
+        data_json = json.loads(r2.text)
+        json_formatted_str = json.dumps(data_json, indent=2)
+        print(json_formatted_str)
+        with open('restauraunt_data.json','w') as outfile:
           outfile.write(json_formatted_str)
 
-    return render_template ('search.html', my_data = my_data, user = current_user)
+        return render_template ('search.html', my_data = data_json["results"]["data"], user = current_user)
+    else:
+        return render_template ('search.html', user = current_user)
 
 
 @views.route('/manual-input', methods = ['GET', 'POST'])
