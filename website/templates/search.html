@@ -15,23 +15,23 @@
 
 <ul class="list-group list-group-flush" id="search-results">
 {% for data in my_data %}
-  <li class="list-group-item">
+  <li class="list-group-item" >
     {% if data["name"] %}
-    <p>{{ data["name"]}}</p>
+    <p class="name">{{ data["name"]}}</p>
     {% endif %}
 
     {% if data["phone"] %}
-    <p>{{ data["phone"] }}</p>
+    <p class="phone">{{ data["phone"] }}</p>
     {% endif %}
 
     {% if data["website"] %}
-    <p>{{ data["website"] }}</p>
+    <p class="website">{{ data["website"] }}</p>
     {% endif %}
 
     {% if data["address"] %}
-    <p>{{ data["address"]}}</p>
+    <p class="address">{{ data["address"]}}</p>
     {% endif %}
-    <button type="button" class="close" >
+    <button type="button" onclick="AddNewFavorite(event)">
       Add to favorites
     </button>
   </li>

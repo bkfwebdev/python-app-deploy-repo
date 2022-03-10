@@ -7,8 +7,35 @@ function deleteFavorite(favoriteId){
     });
 }
 
-function addFavorite(){
-    var formData = new FormData();
+function AddNewFavorite(e){
+/*get data from clicked li element*/
+console.log("attempting post request")
+
+let li = e.target.closest('li');
+let dataNodes = li.childNodes;
+let formData = new FormData();
+dataNodes.forEach(element => {
+    if (element.nextElementSibling.className = "name"){formData.append("RestaurauntName",element.textContent)}
+    if (element.nextElementSibling.className = "phone"){formData.append("PhoneNumber",element.textContent)}
+    if (element.nextElementSibling.className = "website"){formData.append("Website",element.textContent)}
+    if (element.nextElementSibling.className = "address"){formData.append("StreetAddress",element.textContent)}   
+});
+console.log(formData)
+fetch("/",
+    {
+        body: formData,
+        method: "POST"
+    });
+
+console.log("function complete")
+}
+
+function eventCaptureTest(){
+    alert("event captured")
+}
+
+/*submit data for new favorite to data base
+
 
 formData.append("username", "Groucho");
 formData.append("accountnum", 123456); // number 123456 is immediately converted to a string "123456"
@@ -27,3 +54,5 @@ request.open("POST", "http://foo.com/submitform.php");
 request.send(formData);
 }
 
+
+*/
