@@ -14,12 +14,33 @@ console.log("attempting post request")
 let li = e.target.closest('li');
 let dataNodes = li.childNodes;
 let formData = new FormData();
-dataNodes.forEach(element => {
-    if (element.nextElementSibling.className = "name"){formData.append("RestaurauntName",element.textContent)}
-    if (element.nextElementSibling.className = "phone"){formData.append("PhoneNumber",element.textContent)}
-    if (element.nextElementSibling.className = "website"){formData.append("Website",element.textContent)}
-    if (element.nextElementSibling.className = "address"){formData.append("StreetAddress",element.textContent)}   
+console.log("datanodes",dataNodes);
+dataNodes.forEach(dataNode => {
+    /* if(!element){return} */
+    if(dataNode.nodeType == 1){
+    if (dataNode.className == "name"){formData.append("RestaurauntName",dataNode.textContent)}
+    if (dataNode.className == "phone"){formData.append("PhoneNumber",dataNode.textContent)}
+    if (dataNode.className == "website"){formData.append("Website",dataNode.textContent)}
+    if (dataNode.className == "address"){formData.append("StreetAddress",dataNode .textContent)}
+    }   
 });
+
+
+/*
+Array.prototype.forEach.call (dataNodes, function (node) {
+    if (node.nextElementSibling.className == "name"){formData.append("RestaurauntName",node.textContent)}
+    if (node.nextElementSibling.className == "phone"){formData.append("PhoneNumber",node.textContent)}
+    if (node.nextElementSibling.className == "website"){formData.append("Website",node.textContent)}
+    if (node.nextElementSibling.className == "address"){formData.append("StreetAddress",node.textContent)}
+
+        if(!element.nextElementSibling){return}
+    if (element.nextElementSibling.className == "name"){formData.append("RestaurauntName",element.textContent)}
+    if (element.nextElementSibling.className == "phone"){formData.append("PhoneNumber",element.textContent)}
+    if (element.nextElementSibling.className == "website"){formData.append("Website",element.textContent)}
+    if (element.nextElementSibling.className == "address"){formData.append("StreetAddress",element.textContent)}
+
+} );
+*/
 console.log(formData)
 fetch("/",
     {
