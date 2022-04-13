@@ -11,6 +11,8 @@ DB_NAME = "database.db"
 
 def create_app():
     app = Flask(__name__)
+    db.init_app(app)
+    Migrate.init_app(app, db)
     app.config.from_mapping(
         SECRET_KEY = os.environ.get('SECRET_KEY') or 'dev_key',
         SQLALCHEMY_DATABASE_URI = os.environ.get('postgres://ruzouuemtotljl:0ff662697a7a1f4cbf22dff699770508865457921c0690195ea8526409013284@ec2-54-157-79-121.compute-1.amazonaws.com:5432/d36aemg0ue2hkv') or \
@@ -18,8 +20,8 @@ def create_app():
         SQLALCHEMY_TRACK_MODIFICATIONS = False
     )
 
-    db.init_app(app)
-    Migrate.init_app(app, db)
+    #db.init_app(app)
+    #Migrate.init_app(app, db)
 
     from .views import views
     from .auth import auth
