@@ -1,0 +1,14 @@
+Resolution
+From the local repository's root directory, enter these commands:
+
+$ git pull origin
+This pulls your repo from GitHub, assuming that origin is your GitHub remote repo. Change this depending on your local setup. This will make sure all changes committed to GitHub are in your local git repo.
+
+$ git checkout branch-to-deploy
+This will checkout the branch you wish to deploy, for example master or main. You don't strictly need to do this if you are already working on this branch locally.
+
+$ heroku git:remote -a app-name
+This will create the heroku remote in your local repo for the app you wish to deploy to.
+
+$ git push heroku branch-to-deploy:main
+This pushes the local branch to the Heroku app's git repository. You can change heroku depending on what you do in step 3. You can also use a different branch here if you are not deploying from main locally. The last part always needs to be main or master, as Heroku will only start builds for pushes to the main or master branch.
