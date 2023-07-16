@@ -11,7 +11,8 @@ def create_app():
     app.config['SECRET_KEY'] = 'siunimtauchumkiubiuje'
     #app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
     #app.config['SQLALCHEMY_DATABASE_URI'] = f'postgresql://postgres:Over9000@localhost:5432/{DB_NAME}'
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://ruzouuemtotljl:0ff662697a7a1f4cbf22dff699770508865457921c0690195ea8526409013284@ec2-54-157-79-121.compute-1.amazonaws.com:5432/d36aemg0ue2hkv'
+    #app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://ruzouuemtotljl:0ff662697a7a1f4cbf22dff699770508865457921c0690195ea8526409013284@ec2-54-157-79-121.compute-1.amazonaws.com:5432/d36aemg0ue2hkv'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://bkfwebdev:V!?4Un/T7d,x/Ba@database-2.ccp5lyoqowgr.us-east-1.rds.amazonaws.com:5432/database-2'
 
 
 
